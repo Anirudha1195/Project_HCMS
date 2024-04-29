@@ -7,12 +7,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+import jakarta.transaction.Transactional;
+@Transactional
 @Entity
 @Table(name = "Departments")
 public class Departments {
+	
 	@Id
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "DepartmentID")
 	private int departmentId;
 
@@ -22,6 +26,7 @@ public class Departments {
 	@Column(name = "Description")
 	private String description;
 
+	
 	// Getters and setters
 	public Departments() {
 	}

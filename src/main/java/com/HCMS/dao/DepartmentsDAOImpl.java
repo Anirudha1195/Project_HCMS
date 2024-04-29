@@ -8,12 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import com.HCMS.dao.DepartmentsDAO;
 import com.HCMS.entities.Departments;
+import com.HCMS.entities.Departments;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public class DepartmentsDAOImpl implements DepartmentsDAO {
+
 
 	@Autowired
 	private EntityManager entityManager;
@@ -24,7 +26,27 @@ public class DepartmentsDAOImpl implements DepartmentsDAO {
 	}
 
 	@Override
-	public void addDepartments(Departments department) {
-		entityManager.unwrap(Session.class).saveOrUpdate(department);
+	public void addDepartment(Departments Department) {
+		entityManager.unwrap(Session.class).saveOrUpdate(Department);
 	}
+
+	@Override
+	public void updateDepartment(Departments Department) {
+		entityManager.unwrap(Session.class).merge(Department);
+
+	}
+
+
+	@Override
+	public void deleteDepartment(Departments emp) {
+		entityManager.unwrap(Session.class).remove(emp);
+
+	}
+
+	@Override
+	public Departments getDepartmentById(int DepartmentId) {
+		// TODO Auto-generated method stub
+		return entityManager.unwrap(Session.class).get(Departments.class,DepartmentId);
+	}
+
 }

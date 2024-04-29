@@ -17,4 +17,6 @@ public interface RolesDAO {
 
 	Roles getRoleById(int roleId);
 
+	
+
 }

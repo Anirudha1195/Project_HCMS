@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.HCMS.entities.Employees;
+import com.HCMS.entities.Roles;
 import com.HCMS.entities.Roles;
 
 import jakarta.persistence.EntityManager;
@@ -26,27 +26,32 @@ public class RolesDAOImpl implements RolesDAO {
 	}
 
 	@Override
-	public void addRole(Roles role) {
-		entityManager.unwrap(Session.class).saveOrUpdate(role);
+	public void addRole(Roles Role) {
+		entityManager.unwrap(Session.class).saveOrUpdate(Role);
 	}
 
 	@Override
-	public void updateRole(Roles role) {
-		// TODO Auto-generated method stub
+	public void updateRole(Roles Role) {
+		entityManager.unwrap(Session.class).merge(Role);
 
+	}
+
+
+	
+	public void deleteRole(Roles emp) {
+		entityManager.unwrap(Session.class).remove(emp);
+
+	}
+
+	@Override
+	public Roles getRoleById(int RoleId) {
+		return entityManager.unwrap(Session.class).get(Roles.class,RoleId);
 	}
 
 	@Override
 	public void deleteRole(int roleId) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
-	@Override
-	public Roles getRoleById(int roleId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

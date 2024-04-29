@@ -17,5 +17,11 @@ public interface DepartmentsService {
 
 	Departments getDepartmentById(int departmentId);
 
+	void addEmployee(Departments employee);
+
+	Departments getEmployeeById(int id);
+
+	void deleteDepartment(Departments Department);
+
 }
 

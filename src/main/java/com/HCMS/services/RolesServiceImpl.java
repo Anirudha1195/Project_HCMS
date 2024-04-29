@@ -39,8 +39,7 @@ public class RolesServiceImpl implements RolesService {
 
 	@Override
 	public Roles getRoleById(int roleId) {
-		// TODO Auto-generated method stub
-		return null;
+		return rolesDAO.getRoleById(roleId);
 	}
 
 }

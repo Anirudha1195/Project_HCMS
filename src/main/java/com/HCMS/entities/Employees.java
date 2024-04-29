@@ -4,6 +4,7 @@ package com.HCMS.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -54,7 +55,7 @@ public class Employees {
 	@Column(name = "EmergencyContactPhone")
 	private String emergencyContactPhone;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "DepartmentID")
 	private Departments department;
 
@@ -79,11 +80,11 @@ public class Employees {
 	@Column(name = "BankAccountNumber")
 	private String bankAccountNumber;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ManagerID")
 	private Employees manager;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "RoleID")
 	private Roles role;
 
@@ -91,6 +92,7 @@ public class Employees {
 	public Employees() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Employees(int employeeId, String firstName, String lastName, String gender, LocalDate dateOfBirth,
 			String email, String phone, String address, String nationalId, String maritalStatus,
